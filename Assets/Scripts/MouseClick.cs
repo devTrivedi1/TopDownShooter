@@ -30,4 +30,9 @@ public class MouseClick : MonoBehaviour
 	{
 		mouseClick = Input.GetAxis("Fire1");
 	}
+
+    private void Shoot()
+    {
+        
+    }
 }
