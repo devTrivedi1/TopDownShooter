@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class MouseClick : MonoBehaviour
 {
-	private GameObject[] bullets;
+	private GameObject bullets;
+	private float speed = 10f;
 	private float mouseClick;
 
 	private void Start()
 	{
-		bullets = GameObject.FindGameObjectsWithTag("Bullets");
+		bullets = (GameObject)Instantiate(bullets, transform.position, Quaternion.identity);
+		bullets.tag = "Bullets";
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
+
 		MouseClicked();
 	}
 
@@ -23,6 +26,7 @@ public class MouseClick : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			ReadInput();
+			Shoot();
 		}
 	}
 
@@ -31,8 +35,8 @@ public class MouseClick : MonoBehaviour
 		mouseClick = Input.GetAxis("Fire1");
 	}
 
-    private void Shoot()
-    {
-        
-    }
+	private void Shoot()
+	{
+		bullets = Instantiate(bullets, transform.position, Quaternion.identity);
+	}
 }
