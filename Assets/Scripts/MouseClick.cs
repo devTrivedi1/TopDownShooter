@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class MouseClick : MonoBehaviour
 {
-	private GameObject bullets;
+	[SerializeField] private GameObject bulletPrefab;
 	private float speed = 10f;
 	private float mouseClick;
-
-	private void Start()
-	{
-		bullets = (GameObject)Instantiate(bullets, transform.position, Quaternion.identity);
-		bullets.tag = "Bullets";
-	}
 
 	// Update is called once per frame
 	private void Update()
 	{
 
 		MouseClicked();
+
 	}
 
 	private void MouseClicked()
@@ -28,6 +23,8 @@ public class MouseClick : MonoBehaviour
 			ReadInput();
 			Shoot();
 		}
+
+
 	}
 
 	private void ReadInput()
@@ -37,6 +34,6 @@ public class MouseClick : MonoBehaviour
 
 	private void Shoot()
 	{
-		bullets = Instantiate(bullets, transform.position, Quaternion.identity);
+		Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
 	}
 }
