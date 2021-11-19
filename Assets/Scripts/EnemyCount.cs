@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class EnemyCount : MonoBehaviour
 {
 	GameObject[] enemies;
-	[SerializeField]TextMeshProUGUI enemyCount;
+	[SerializeField] TextMeshProUGUI enemyCount;
+	[SerializeField] private GameObject completeLevelUI;
 
 	void Start()
 	{
@@ -17,5 +18,15 @@ public class EnemyCount : MonoBehaviour
 	{
 		enemies = GameObject.FindGameObjectsWithTag("Enemies");
 		enemyCount.text = "Enemies : " + enemies.Length.ToString();
+		if(enemies.Length == 0)
+		{
+			CompleteLevel();
+		}
+	}
+
+
+	void CompleteLevel()
+	{
+		completeLevelUI.SetActive(true);
 	}
 }
