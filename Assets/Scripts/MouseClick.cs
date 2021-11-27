@@ -5,7 +5,6 @@ using UnityEngine;
 public class MouseClick : MonoBehaviour
 {
 	[SerializeField] private GameObject bulletPrefab;
-	private float speed = 10f;
 	private float mouseClick;
 
 	// Update is called once per frame
@@ -23,8 +22,6 @@ public class MouseClick : MonoBehaviour
 			ReadInput();
 			Shoot();
 		}
-
-
 	}
 
 	private void ReadInput()
@@ -34,6 +31,8 @@ public class MouseClick : MonoBehaviour
 
 	private void Shoot()
 	{
-		Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
+
+		Instantiate(bulletPrefab, this.transform.position, Quaternion.Euler(new Vector3(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z)));
 	}
+
 }
